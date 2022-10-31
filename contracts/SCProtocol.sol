@@ -82,8 +82,9 @@ contract SCProtocol is Ownable {
         _;
     }
 
-    function addAdmin() external onlyOwner{
-
+    function addAdmin(string memory email, address adminAddress) external onlyOwner{
+        require(admins[email] != adminAddress, "Already a admin");
+        admins[email] = adminAddress;
     }
 
     function isAdmin(address addressToCheck) external returns(bool){
