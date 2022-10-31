@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
+import '@openzeppelin/contracts/access/Ownable.sol';
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract SCProtocol {
+contract SCProtocol is Ownable {
     mapping(string=>address) admins;
     enum WorkerType{
         Person,
@@ -84,7 +85,9 @@ contract SCProtocol {
 
     }
 
-    function addWorker(WorkerType workerType, string memory name, string memory email, string memory contact ) external onlyAdmin;
+    function addWorker(WorkerType workerType, string memory name, string memory email, string memory contact ) external onlyAdmin {
+
+    }
 
     function addLocation(string memory district, string memory subdistrict, string memory details) external onlyAdmin {
 
