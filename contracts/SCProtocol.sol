@@ -76,5 +76,41 @@ contract SCProtocol {
     // project ID -> array of Project
     mapping(uint256=>Project) projects; 
 
+    function addAdmin() external onlyOwner{
 
+    }
+
+    function isAdmin(address addressToCheck) external returns(bool){
+
+    }
+
+    function addWorker(WorkerType workerType, string memory name, string memory email, string memory contact ) external onlyAdmin;
+
+    function addLocation(string memory district, string memory subdistrict, string memory details) external onlyAdmin {
+
+    }
+
+    function addProduct(string memory name, string memory description, string memory productId, string memory unit, uint256 amount) external onlyAdmin {
+
+    }
+
+    function getAllProducts() external returns(Product[] memory) {
+        
+    }
+
+    function getAllLocations() external returns(Location[] memory) {
+
+    }
+
+    function addProject(Project project) external onlyAdmin {
+
+    }
+
+    function updateProjectStatus(uint256 projectId, uint256 supplyChainLevel, Status currentStatus, statusDetails) external {
+
+    }
+
+    function getProject() external returns(Project[] memory) {
+
+    }
 }
