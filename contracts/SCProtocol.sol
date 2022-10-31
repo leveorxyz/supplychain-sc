@@ -111,6 +111,10 @@ contract SCProtocol is Ownable {
 
     }
 
+    function getAllWorkers() external returns(Worker[] memory){
+        
+    }
+
     function addProject(Project memory project, string memory email) external onlyAdmin(email) {
 
     }
