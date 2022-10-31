@@ -12,18 +12,18 @@ contract SCProtocol is Ownable {
         IOT
     }
     struct Worker{
-    string name;
-    WorkerType workerType;
-    string email;
-    string contact;
+        string name;
+        WorkerType workerType;
+        string email;
+        string contact;
     }
     uint256 latestWorkerID;
     mapping(uint256=>Worker) workers;
 
     struct Location{
-    string district;
-    string subDistrict;
-    string details;
+        string district;
+        string subDistrict;
+        string details;
     }
 
     bytes[] allLocationHashes;
@@ -92,7 +92,12 @@ contract SCProtocol is Ownable {
     }
 
     function addWorker(WorkerType workerType, string memory name, string memory email, string memory contact ) external onlyAdmin(email) {
-
+          Worker storage worker = workers[latestProjectId];
+          worker.workerType = workerType; 
+          worker.name = name; 
+          worker.email = email; 
+          worker.contact = contact; 
+          latestProjectId++;
     }
 
     function addLocation(string memory district, string memory subdistrict, string memory details, string memory email) external onlyAdmin(email) {
