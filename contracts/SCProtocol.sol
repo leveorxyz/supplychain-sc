@@ -147,7 +147,9 @@ contract SCProtocol is Ownable {
     }
 
     function updateProjectStatus(uint256 projectId, uint256 supplyChainLevel, Status currentStatus, string memory statusDetails) external {
-
+        require(projectId<latestProjectId, "Project ID do not exist");
+         projects[projectId].supplyChainStages[supplyChainLevel].status = currentStatus;
+         projects[projectId].supplyChainStages[supplyChainLevel].statusDetails = statusDetails;
     }
 
     function getProject() external returns(Project[] memory) {
