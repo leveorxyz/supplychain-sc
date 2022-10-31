@@ -22,13 +22,13 @@ contract SCProtocol is Ownable {
 
     struct Location{
         string district;
-        string subDistrict;
+        string subdistrict;
         string details;
     }
 
-    bytes[] allLocationHashes;
+    bytes32[] allLocationHashes;
 
-    mapping(bytes=>Location) locations;
+    mapping(bytes32=>Location) locations;
 
     struct Product{
         uint256 productId;
@@ -101,7 +101,12 @@ contract SCProtocol is Ownable {
     }
 
     function addLocation(string memory district, string memory subdistrict, string memory details, string memory email) external onlyAdmin(email) {
-
+       bytes32 hashOfData = keccak256(abi.encodePacked(district, subdistrict, details, email)); 
+       Location storage location = locations[hashOfData];
+       location.district = district;
+       location.subdistrict = subdistrict;
+       location.details = details;
+       allLocationHashes.push(hashOfData);
     }
 
     function addProduct(string memory name, string memory description, string memory productId, string memory unit, uint256 amount, string memory email) external onlyAdmin(email) {
