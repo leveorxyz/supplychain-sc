@@ -142,8 +142,13 @@ contract SCProtocol is Ownable {
         return allLocations;
     }
 
-    function getAllWorkers() external returns(Worker[] memory){
-        
+    function getAllWorkers() external view returns(Worker[] memory){
+        Worker[] memory allWorkers = new Worker[](latestWorkerID);
+        for (uint256 index = 0; index < latestWorkerID; index++) {
+            Worker storage worker = workers[index];
+            allWorkers[index] = worker;
+        }
+        return allWorkers;
     }
 
     function addProject(Project memory project, string memory email) external onlyAdmin(email) {
