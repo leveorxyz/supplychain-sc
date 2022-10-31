@@ -87,8 +87,8 @@ contract SCProtocol is Ownable {
         admins[email] = adminAddress;
     }
 
-    function isAdmin(address addressToCheck) external returns(bool){
-
+    function isAdmin(string memory email) external returns(bool){
+        return admins[email] != address(0); 
     }
 
     function addWorker(WorkerType workerType, string memory name, string memory email, string memory contact ) external onlyAdmin(email) {
