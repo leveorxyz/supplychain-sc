@@ -77,6 +77,11 @@ contract SCProtocol is Ownable {
     // project ID -> array of Project
     mapping(uint256=>Project) projects; 
 
+    modifier onlyAdmin(string memory email) {
+        require(admins[email] != address(0), "Not an admin");
+        _;
+    }
+
     function addAdmin() external onlyOwner{
 
     }
@@ -85,15 +90,15 @@ contract SCProtocol is Ownable {
 
     }
 
-    function addWorker(WorkerType workerType, string memory name, string memory email, string memory contact ) external onlyAdmin {
+    function addWorker(WorkerType workerType, string memory name, string memory email, string memory contact ) external onlyAdmin(email) {
 
     }
 
-    function addLocation(string memory district, string memory subdistrict, string memory details) external onlyAdmin {
+    function addLocation(string memory district, string memory subdistrict, string memory details, string memory email) external onlyAdmin(email) {
 
     }
 
-    function addProduct(string memory name, string memory description, string memory productId, string memory unit, uint256 amount) external onlyAdmin {
+    function addProduct(string memory name, string memory description, string memory productId, string memory unit, uint256 amount, string memory email) external onlyAdmin(email) {
 
     }
 
@@ -105,11 +110,11 @@ contract SCProtocol is Ownable {
 
     }
 
-    function addProject(Project project) external onlyAdmin {
+    function addProject(Project memory project) external onlyAdmin {
 
     }
 
-    function updateProjectStatus(uint256 projectId, uint256 supplyChainLevel, Status currentStatus, statusDetails) external {
+    function updateProjectStatus(uint256 projectId, uint256 supplyChainLevel, Status currentStatus, string memory statusDetails) external {
 
     }
 
