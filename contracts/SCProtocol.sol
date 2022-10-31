@@ -169,7 +169,12 @@ contract SCProtocol is Ownable {
          projects[projectId].supplyChainStages[supplyChainLevel].statusDetails = statusDetails;
     }
 
-    function getProject() external returns(Project[] memory) {
-
+    function getProjects() external view returns(Project[] memory) {
+        Project[] memory allProjects = new Project[](latestProjectId);
+        for (uint256 index = 0; index < latestProjectId; index++) {
+            Project storage project = projects[index];
+            allProjects[index] = project;
+        }
+        return allProjects;
     }
 }
