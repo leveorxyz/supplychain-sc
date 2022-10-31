@@ -132,8 +132,14 @@ contract SCProtocol is Ownable {
         return allProducts;
     }
 
-    function getAllLocations() external returns(Location[] memory) {
-
+    function getAllLocations() external view returns(Location[] memory) {
+        uint256 numberOfLocations = allLocationHashes.length;
+        Location[] memory allLocations = new Location[](numberOfLocations);
+        for (uint256 index = 0; index < numberOfLocations; index++) {
+            Location storage location = locations[allLocationHashes[index]];
+            allLocations[index] = location;
+        }
+        return allLocations;
     }
 
     function getAllWorkers() external returns(Worker[] memory){
