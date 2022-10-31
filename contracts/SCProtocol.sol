@@ -111,7 +111,7 @@ contract SCProtocol is Ownable {
 
     }
 
-    function addProject(Project memory project) external onlyAdmin {
+    function addProject(Project memory project, string memory email) external onlyAdmin(email) {
 
     }
 
