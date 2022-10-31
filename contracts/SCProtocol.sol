@@ -87,7 +87,7 @@ contract SCProtocol is Ownable {
         admins[email] = adminAddress;
     }
 
-    function isAdmin(string memory email) external returns(bool){
+    function isAdmin(string memory email) public view returns(bool){
         return admins[email] != address(0); 
     }
 
