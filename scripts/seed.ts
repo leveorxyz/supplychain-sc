@@ -76,6 +76,25 @@ const seedWorkers = async (count: number, email: string) => {
   return await invokeFirefly(inputs, "addWorker");
 };
 
+const seedProjects = async (count: number, email: string) => {
+  let inputs = [];
+  for (let i = 0; i < count; i++) {
+    inputs.push({
+      project: {
+        projectName: randProduct().title,
+        startDate: Math.round(Date.now() / 1000),
+        endDate: Math.round(Date.now() / 1000) + 864000,
+        productId: randNumber(),
+        quantity: randNumber(),
+        unit: randUuid(),
+        supplyChainStages: [],
+      },
+      email: email,
+    });
+  }
+  return await invokeFirefly(inputs, "addProject");
+};
+
 (async () => {
   const email = "contact@leveor.xyz";
   const owner = (await firefly.queryContractAPI("SCProtocol", "owner", {}, {}))
@@ -107,4 +126,7 @@ const seedWorkers = async (count: number, email: string) => {
 
   const resWorkers = await seedWorkers(10, email);
   console.log("Workers seeded:", resWorkers.results.length);
+
+  const resProjects = await seedProjects(10, email);
+  console.log("Projects seeded:", resProjects.errors);
 })();
