@@ -7,6 +7,8 @@ import {
   randProduct,
   randUuid,
   randNumber,
+  randFullName,
+  randPhoneNumber,
 } from "@ngneat/falso";
 import { PromisePool } from "@supercharge/promise-pool";
 
@@ -61,6 +63,19 @@ const seedProducts = async (count: number, email: string) => {
   return await invokeFirefly(inputs, "addProduct");
 };
 
+const seedWorkers = async (count: number, email: string) => {
+  let inputs = [];
+  for (let i = 0; i < count; i++) {
+    inputs.push({
+      workerType: Math.round(Math.random()),
+      name: randFullName(),
+      email: email,
+      contact: randPhoneNumber(),
+    });
+  }
+  return await invokeFirefly(inputs, "addWorker");
+};
+
 (async () => {
   const email = "contact@leveor.xyz";
   const owner = (await firefly.queryContractAPI("SCProtocol", "owner", {}, {}))
@@ -89,4 +104,7 @@ const seedProducts = async (count: number, email: string) => {
 
   const resProducts = await seedProducts(10, email);
   console.log("Products seeded:", resProducts.results.length);
+
+  const resWorkers = await seedWorkers(10, email);
+  console.log("Workers seeded:", resWorkers.results.length);
 })();
