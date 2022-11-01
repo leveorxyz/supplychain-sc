@@ -1,14 +1,15 @@
 {
   "name": "hardhat-project",
   "devDependencies": {
+    "@ngneat/falso": "^6.1.0",
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@openzeppelin/contracts": "^4.7.3",
     "@openzeppelin/hardhat-upgrades": "^1.21.0",
     "hardhat": "^2.12.1",
-    "@ngneat/falso": "^6.1.0",
-    "solc": "^0.8.17",
-    "@openzeppelin/contracts": "^4.7.3"
+    "solc": "^0.8.17"
   },
   "dependencies": {
-    "@hyperledger/firefly-sdk": "^1.1.11"
+    "@hyperledger/firefly-sdk": "^1.1.11",
+    "@supercharge/promise-pool": "^2.3.2"
   }
 }
