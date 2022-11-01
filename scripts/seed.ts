@@ -1,5 +1,13 @@
 import FireFly from "@hyperledger/firefly-sdk";
-import { randCity, randText, randAddress, Address } from "@ngneat/falso";
+import {
+  randCity,
+  randText,
+  randAddress,
+  Address,
+  randProduct,
+  randUuid,
+  randNumber,
+} from "@ngneat/falso";
 import { PromisePool } from "@supercharge/promise-pool";
 
 const firefly = new FireFly({ host: "http://localhost:5000" });
@@ -36,6 +44,23 @@ const seedAddress = async (count: number, email: string) => {
   return await invokeFirefly(inputs, "addLocation");
 };
 
+const seedProducts = async (count: number, email: string) => {
+  let inputs = [];
+  for (let i = 0; i < count; i++) {
+    let product = randProduct();
+    inputs.push({
+      name: product.title,
+      description: product.description,
+      productId: randUuid(),
+      unit: randUuid(),
+      price: randNumber(),
+      amount: randNumber(),
+      email: email,
+    });
+  }
+  return await invokeFirefly(inputs, "addProduct");
+};
+
 (async () => {
   const email = "contact@leveor.xyz";
   const owner = (await firefly.queryContractAPI("SCProtocol", "owner", {}, {}))
@@ -61,4 +86,7 @@ const seedAddress = async (count: number, email: string) => {
 
   const resAddress = await seedAddress(10, email);
   console.log("Addresses seeded:", resAddress.results.length);
+
+  const resProducts = await seedProducts(10, email);
+  console.log("Products seeded:", resProducts.results.length);
 })();
