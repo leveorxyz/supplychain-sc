@@ -3,11 +3,12 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
     "@openzeppelin/hardhat-upgrades": "^1.21.0",
-    "hardhat": "^2.12.1"
+    "hardhat": "^2.12.1",
+    "@ngneat/falso": "^6.1.0",
+    "solc": "^0.8.17",
+    "@openzeppelin/contracts": "^4.7.3"
   },
   "dependencies": {
-    "@hyperledger/firefly-sdk": "^1.1.11",
-    "@openzeppelin/contracts": "^4.7.3",
-    "solc": "^0.8.17"
+    "@hyperledger/firefly-sdk": "^1.1.11"
   }
 }
