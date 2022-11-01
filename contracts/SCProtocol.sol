@@ -153,7 +153,11 @@ contract SCProtocol is Ownable {
 
     function addProject(Project memory project, string memory email) external onlyAdmin(email) {
         Project storage newProject = projects[latestProjectId];
-        newProject.supplyChainStages = project.supplyChainStages;
+        uint256 totalSupplyChainStages = project.supplyChainStages.length;
+        
+        for (uint256 index = 0; index < totalSupplyChainStages; index++) {
+            newProject.supplyChainStages.push(project.supplyChainStages[index]);
+        }
         newProject.productId = project.productId;
         newProject.projectName = project.projectName;
         newProject.startDate = project.startDate;
