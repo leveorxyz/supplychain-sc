@@ -6,6 +6,7 @@
     "hardhat": "^2.12.1"
   },
   "dependencies": {
+    "@hyperledger/firefly-sdk": "^1.1.11",
     "@openzeppelin/contracts": "^4.7.3"
   }
 }
