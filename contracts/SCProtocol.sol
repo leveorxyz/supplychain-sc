@@ -93,12 +93,12 @@ contract SCProtocol is Ownable {
     }
 
     function addWorker(WorkerType workerType, string memory name, string memory email, string memory contact ) external onlyAdmin(email) {
-          Worker storage worker = workers[latestProjectId];
+          Worker storage worker = workers[latestWorkerID];
           worker.workerType = workerType; 
           worker.name = name; 
           worker.email = email; 
           worker.contact = contact; 
-          latestProjectId++;
+          latestWorkerID++;
     }
 
     function addLocation(string memory district, string memory subdistrict, string memory details, string memory email) external onlyAdmin(email) {
