@@ -1,5 +1,8 @@
 {
   "name": "hardhat-project",
+  "scripts": {
+    "seed": "npx hardhat run scripts/seed.ts"
+  },
   "devDependencies": {
     "@ngneat/falso": "^6.1.0",
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
