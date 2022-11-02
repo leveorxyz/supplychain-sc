@@ -138,26 +138,26 @@ const seedProjects = async (count: number, email: string) => {
 
 (async () => {
   const email = "contact@leveor.xyz";
-  // const owner = (await firefly.queryContractAPI("SCProtocol", "owner", {}, {}))
-  //   .output;
-  // await firefly.invokeContractAPI("SCProtocol", "addAdmin", {
-  //   input: {
-  //     email,
-  //     adminAddress: owner,
-  //   },
-  // });
+  const owner = (await firefly.queryContractAPI("SCProtocol", "owner", {}, {}))
+    .output;
+  await firefly.invokeContractAPI("SCProtocol", "addAdmin", {
+    input: {
+      email,
+      adminAddress: owner,
+    },
+  });
 
-  // const isAdmin = (
-  //   await firefly.queryContractAPI("SCProtocol", "isAdmin", {
-  //     input: {
-  //       email,
-  //     },
-  //   })
-  // ).output;
+  const isAdmin = (
+    await firefly.queryContractAPI("SCProtocol", "isAdmin", {
+      input: {
+        email,
+      },
+    })
+  ).output;
 
-  // if (!isAdmin) {
-  //   throw new Error("Email not admin");
-  // }
+  if (!isAdmin) {
+    throw new Error("Email not admin");
+  }
 
   const resAddress = await seedAddress(10, email);
   console.log("Addresses seeded:", resAddress.results.length);
