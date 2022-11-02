@@ -111,7 +111,7 @@ contract SCProtocol is Ownable {
     }
 
     function addProduct(string memory name, string memory description, string memory productId, string memory unit, uint256 amount, uint256 price, string memory email) external onlyAdmin(email) {
-        require(products[productId].amount != 0, "Product ID already exist");
+        require(products[productId].amount == 0, "Product ID already exist");
         Product storage product = products[productId];
         product.productName = name;
         product.description = description;
