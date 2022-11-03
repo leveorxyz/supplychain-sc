@@ -1,16 +1,31 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
-import '@openzeppelin/contracts/access/Ownable.sol';
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract SCProtocol is Ownable {
+contract SCProtocol {
+
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    function getOwner() public view returns(address) {
+        return owner;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not a owner");
+        _;
+    }
+
     mapping(string=>address) admins;
     enum WorkerType{
         Person,
         IOT
     }
+
+    address owner;
     struct Worker{
         string name;
         WorkerType workerType;

@@ -1,11 +1,19 @@
 {
   "name": "hardhat-project",
+  "scripts": {
+    "seed": "npx hardhat run scripts/seed.ts"
+  },
   "devDependencies": {
+    "@ngneat/falso": "^6.1.0",
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@openzeppelin/contracts": "^4.7.3",
     "@openzeppelin/hardhat-upgrades": "^1.21.0",
-    "hardhat": "^2.12.1"
+    "@supercharge/promise-pool": "^2.3.2",
+    "hardhat": "^2.12.1",
+    "keccak256": "^1.0.6",
+    "solc": "^0.8.17"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.7.3"
+    "@hyperledger/firefly-sdk": "^1.1.11"
   }
 }

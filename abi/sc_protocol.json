@@ -1,0 +1,473 @@
+[
+  {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+          },
+          {
+              "internalType": "address",
+              "name": "adminAddress",
+              "type": "address"
+          }
+      ],
+      "name": "addAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "string",
+              "name": "district",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "subdistrict",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "details",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+          }
+      ],
+      "name": "addLocation",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "productId",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "unit",
+              "type": "string"
+          },
+          {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+          },
+          {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+          },
+          {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+          }
+      ],
+      "name": "addProduct",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "components": [
+                  {
+                      "internalType": "string",
+                      "name": "projectName",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "startDate",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "endDate",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "productId",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "quantity",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "unit",
+                      "type": "string"
+                  },
+                  {
+                      "components": [
+                          {
+                              "internalType": "uint256",
+                              "name": "workerID",
+                              "type": "uint256"
+                          },
+                          {
+                              "internalType": "enum SCProtocol.LocationType",
+                              "name": "locationType",
+                              "type": "uint8"
+                          },
+                          {
+                              "internalType": "bytes",
+                              "name": "locationHash",
+                              "type": "bytes"
+                          },
+                          {
+                              "internalType": "uint256",
+                              "name": "expectedPickUpdate",
+                              "type": "uint256"
+                          },
+                          {
+                              "internalType": "uint256",
+                              "name": "price",
+                              "type": "uint256"
+                          },
+                          {
+                              "internalType": "enum SCProtocol.Status",
+                              "name": "status",
+                              "type": "uint8"
+                          },
+                          {
+                              "internalType": "string",
+                              "name": "statusDetails",
+                              "type": "string"
+                          }
+                      ],
+                      "internalType": "struct SCProtocol.SupplyChainStage[]",
+                      "name": "supplyChainStages",
+                      "type": "tuple[]"
+                  }
+              ],
+              "internalType": "struct SCProtocol.Project",
+              "name": "project",
+              "type": "tuple"
+          },
+          {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+          }
+      ],
+      "name": "addProject",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "enum SCProtocol.WorkerType",
+              "name": "workerType",
+              "type": "uint8"
+          },
+          {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+          },
+          {
+              "internalType": "string",
+              "name": "contact",
+              "type": "string"
+          }
+      ],
+      "name": "addWorker",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "getAllLocations",
+      "outputs": [
+          {
+              "components": [
+                  {
+                      "internalType": "string",
+                      "name": "district",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "subdistrict",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "details",
+                      "type": "string"
+                  }
+              ],
+              "internalType": "struct SCProtocol.Location[]",
+              "name": "",
+              "type": "tuple[]"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "getAllProducts",
+      "outputs": [
+          {
+              "components": [
+                  {
+                      "internalType": "uint256",
+                      "name": "productId",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "productName",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "productPrice",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "description",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "unit",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "amount",
+                      "type": "uint256"
+                  }
+              ],
+              "internalType": "struct SCProtocol.Product[]",
+              "name": "",
+              "type": "tuple[]"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "getAllWorkers",
+      "outputs": [
+          {
+              "components": [
+                  {
+                      "internalType": "string",
+                      "name": "name",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "enum SCProtocol.WorkerType",
+                      "name": "workerType",
+                      "type": "uint8"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "email",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "contact",
+                      "type": "string"
+                  }
+              ],
+              "internalType": "struct SCProtocol.Worker[]",
+              "name": "",
+              "type": "tuple[]"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "getOwner",
+      "outputs": [
+          {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "getProjects",
+      "outputs": [
+          {
+              "components": [
+                  {
+                      "internalType": "string",
+                      "name": "projectName",
+                      "type": "string"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "startDate",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "endDate",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "productId",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "uint256",
+                      "name": "quantity",
+                      "type": "uint256"
+                  },
+                  {
+                      "internalType": "string",
+                      "name": "unit",
+                      "type": "string"
+                  },
+                  {
+                      "components": [
+                          {
+                              "internalType": "uint256",
+                              "name": "workerID",
+                              "type": "uint256"
+                          },
+                          {
+                              "internalType": "enum SCProtocol.LocationType",
+                              "name": "locationType",
+                              "type": "uint8"
+                          },
+                          {
+                              "internalType": "bytes",
+                              "name": "locationHash",
+                              "type": "bytes"
+                          },
+                          {
+                              "internalType": "uint256",
+                              "name": "expectedPickUpdate",
+                              "type": "uint256"
+                          },
+                          {
+                              "internalType": "uint256",
+                              "name": "price",
+                              "type": "uint256"
+                          },
+                          {
+                              "internalType": "enum SCProtocol.Status",
+                              "name": "status",
+                              "type": "uint8"
+                          },
+                          {
+                              "internalType": "string",
+                              "name": "statusDetails",
+                              "type": "string"
+                          }
+                      ],
+                      "internalType": "struct SCProtocol.SupplyChainStage[]",
+                      "name": "supplyChainStages",
+                      "type": "tuple[]"
+                  }
+              ],
+              "internalType": "struct SCProtocol.Project[]",
+              "name": "",
+              "type": "tuple[]"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+          }
+      ],
+      "name": "isAdmin",
+      "outputs": [
+          {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "internalType": "uint256",
+              "name": "projectId",
+              "type": "uint256"
+          },
+          {
+              "internalType": "uint256",
+              "name": "supplyChainLevel",
+              "type": "uint256"
+          },
+          {
+              "internalType": "enum SCProtocol.Status",
+              "name": "currentStatus",
+              "type": "uint8"
+          },
+          {
+              "internalType": "string",
+              "name": "statusDetails",
+              "type": "string"
+          }
+      ],
+      "name": "updateProjectStatus",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  }
+]
