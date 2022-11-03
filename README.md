@@ -1,13 +1,37 @@
-# Sample Hardhat Project
+# Hyperledger Firefly Berger Supply Chain Demo
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+### Preresuisite
 ```
+sudo apt-get update
+sudo add-apt-repository ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install solc
+```
+
+### Orgs 
+Org1 - sc1
+Org2 - sc2
+
+<Stack Name> - berger
+
+### Commands
+
+- Setup firefly:
+```
+ff init --prompt-names
+```
+- Start 
+```
+ff start demo
+```
+- Compile contract. (Assuming you are in the root directory)
+```
+cd contracts
+solc --combined-json abi,bin SCProtocol.sol > ../abi/compiled.json --base-path '/' --include-path 'node_modules/'
+```
+- Deploy contract. (Assuming you are in the root directory)
+```
+cd abi
+ff deploy ethereum berger compiled.json
+```
+- Copy abi from `sc_protcol.json` and register the apis through firefly interface.
