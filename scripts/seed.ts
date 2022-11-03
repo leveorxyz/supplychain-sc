@@ -138,36 +138,37 @@ const seedProjects = async (count: number, email: string) => {
 
 (async () => {
   const email = "contact@leveor.xyz";
-  const owner = (await firefly.queryContractAPI("SCProtocol", "owner", {}, {}))
-    .output;
-  await firefly.invokeContractAPI("SCProtocol", "addAdmin", {
-    input: {
-      email,
-      adminAddress: owner,
-    },
-  });
+  const owner = (await firefly.queryContractAPI("SCProtocol", "owner", {}, {}));
+  console.log(owner);
+  
+  // await firefly.invokeContractAPI("SCProtocol", "addAdmin", {
+  //   input: {
+  //     email,
+  //     adminAddress: owner,
+  //   },
+  // });
 
-  const isAdmin = (
-    await firefly.queryContractAPI("SCProtocol", "isAdmin", {
-      input: {
-        email,
-      },
-    })
-  ).output;
+  // const isAdmin = (
+  //   await firefly.queryContractAPI("SCProtocol", "isAdmin", {
+  //     input: {
+  //       email,
+  //     },
+  //   })
+  // ).output;
 
-  if (!isAdmin) {
-    throw new Error("Email not admin");
-  }
+  // if (!isAdmin) {
+  //   throw new Error("Email not admin");
+  // }
 
-  const resAddress = await seedAddress(10, email);
-  console.log("Addresses seeded:", resAddress.results.length);
+  // const resAddress = await seedAddress(10, email);
+  // console.log("Addresses seeded:", resAddress.results.length);
 
-  const resProducts = await seedProducts(10, email);
-  console.log("Products seeded:", resProducts.results.length);
+  // const resProducts = await seedProducts(10, email);
+  // console.log("Products seeded:", resProducts.results.length);
 
-  const resWorkers = await seedWorkers(10, email);
-  console.log("Workers seeded:", resWorkers.results.length);
+  // const resWorkers = await seedWorkers(10, email);
+  // console.log("Workers seeded:", resWorkers.results.length);
 
-  const resProjects = await seedProjects(10, email);
-  console.log("Projects seeded:", resProjects.results.length);
+  // const resProjects = await seedProjects(10, email);
+  // console.log("Projects seeded:", resProjects.results.length);
 })();

@@ -35,3 +35,4 @@ cd abi
 ff deploy ethereum berger compiled.json
 ```
 - Copy abi from `sc_protocol.json` and register the apis through firefly interface.
+- Create api namespace `SCProtocol`
