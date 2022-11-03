@@ -34,4 +34,4 @@ solc --combined-json abi,bin SCProtocol.sol > ../abi/compiled.json --base-path '
 cd abi
 ff deploy ethereum berger compiled.json
 ```
-- Copy abi from `sc_protcol.json` and register the apis through firefly interface.
+- Copy abi from `sc_protocol.json` and register the apis through firefly interface.
