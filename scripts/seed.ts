@@ -136,17 +136,25 @@ const seedProjects = async (count: number, email: string) => {
   return await invokeFirefly(inputs, "addProject");
 };
 
+const sleep = async (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
 (async () => {
   const email = "contact@leveor.xyz";
-  const owner = (await firefly.queryContractAPI("SCProtocol", "getOwner", {}, {})).output;
+  const owner = (
+    await firefly.queryContractAPI("SCProtocol", "getOwner", {}, {})
+  ).output;
   console.log(owner);
-  
+
   await firefly.invokeContractAPI("SCProtocol", "addAdmin", {
     input: {
       email,
       adminAddress: owner,
     },
   });
+
+  await sleep(2000);
 
   const isAdmin = (
     await firefly.queryContractAPI("SCProtocol", "isAdmin", {
@@ -156,7 +164,6 @@ const seedProjects = async (count: number, email: string) => {
     })
   ).output;
 
-
   if (!isAdmin) {
     throw new Error("Email not admin");
   }
@@ -164,11 +171,17 @@ const seedProjects = async (count: number, email: string) => {
   const resAddress = await seedAddress(10, email);
   console.log("Addresses seeded:", resAddress.results.length);
 
+  await sleep(5000);
+
   const resProducts = await seedProducts(10, email);
   console.log("Products seeded:", resProducts.results.length);
 
+  await sleep(5000);
+
   const resWorkers = await seedWorkers(10, email);
   console.log("Workers seeded:", resWorkers.results.length);
+
+  await sleep(8000);
 
   const resProjects = await seedProjects(10, email);
   console.log("Projects seeded:", resProjects.results.length);
